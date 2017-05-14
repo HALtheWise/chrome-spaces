@@ -568,6 +568,12 @@
         nodes.actionDelete.addEventListener("click", function() {
             handleDelete();
         });
+        nodes.actionBackup.addEventListener("click", function() {
+            handleBackup();
+        });
+        nodes.actionRestore.addEventListener("click", function() {
+            handleRestore();
+        });
         nodes.actionImport.addEventListener("click", function(e) {
             e.preventDefault();
             toggleModal(true);
@@ -719,6 +725,8 @@
         nodes.actionExport = document.getElementById('actionExport');
         nodes.actionDelete = document.getElementById('actionDelete');
         nodes.actionImport = document.getElementById('actionImport');
+        nodes.actionBackup = document.getElementById('actionBackup');
+        nodes.actionRestore = document.getElementById('actionRestore');
         nodes.banner = document.getElementById('banner');
         nodes.modalBlocker = document.querySelector('.blocker');
         nodes.modalContainer = document.querySelector('.modal');
