@@ -383,13 +383,22 @@
         }
     }
 
+    function downloadString(filename, string) {
+        var csvContent = "data:text/csv;charset=utf-8," + string;
+        var encodedUri = encodeURI(csvContent);
+
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", filename);
+        link.click();
+    }
+
     function handleExport() {
 
-        var sessionId, windowId, csvContent, dataString, filename, encodedUri, link, url;
+        var sessionId, windowId, dataString, filename, url;
 
         sessionId = globalSelectedSpace.sessionId;
         windowId = globalSelectedSpace.windowId;
-        csvContent = "data:text/csv;charset=utf-8,";
         dataString = '';
 
         fetchSpaceDetail(sessionId, windowId, function(space) {
@@ -401,15 +410,26 @@
                 }
                 dataString += url + '\n';
             });
-            csvContent += dataString;
 
-            encodedUri = encodeURI(csvContent);
             filename = (space.name || 'untitled') + ".txt";
-            link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", filename);
-            link.click();
+
+            downloadString(filename, dataString);
         });
+
+        handleBackup();
+    }
+
+    function handleBackup() {
+        // Exports all available information held by Spaces as a single .json file
+
+
+        var sessionId, windowId, csvContent, dataString, filename, encodedUri, link, url;
+
+        sessionId = globalSelectedSpace.sessionId;
+        csvContent = "data:text/csv;charset=utf-8,";
+        dataString = '';
+
+        fetchAllSpaces(function(spaces){console.log(spaces)})
     }
 
 
