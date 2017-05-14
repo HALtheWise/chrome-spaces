@@ -426,6 +426,11 @@
         })
     }
 
+    function handleRestore() {
+        // Imports all spaces from a .json file
+        window.alert("Restore functionality not implemented yet, contact eric@legoaces.org")
+    }
+
 
 
 
