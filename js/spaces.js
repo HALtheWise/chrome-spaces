@@ -384,11 +384,11 @@
     }
 
     function downloadString(filename, string) {
-        var csvContent = "data:text/csv;charset=utf-8," + string;
-        var encodedUri = encodeURI(csvContent);
+        var blob = new Blob([string], {type: "octet/stream"}),
+            url = window.URL.createObjectURL(blob);
 
         var link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
+        link.setAttribute("href", url);
         link.setAttribute("download", filename);
         link.click();
     }
@@ -415,21 +415,15 @@
 
             downloadString(filename, dataString);
         });
-
-        handleBackup();
     }
 
     function handleBackup() {
         // Exports all available information held by Spaces as a single .json file
 
-
-        var sessionId, windowId, csvContent, dataString, filename, encodedUri, link, url;
-
-        sessionId = globalSelectedSpace.sessionId;
-        csvContent = "data:text/csv;charset=utf-8,";
-        dataString = '';
-
-        fetchAllSpaces(function(spaces){console.log(spaces)})
+        fetchAllSpaces(function(spaces){
+            var dataString = JSON.stringify(spaces);
+            downloadString('spaces.json', dataString);
+        })
     }
 
 
