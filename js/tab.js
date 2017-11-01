@@ -27,7 +27,7 @@
             spaces = spaces.filter(function(space) {
                 return (space.windowId != globalWindowId); //loose matching here
             });
-            spacesRenderer.initialise(5, false);
+            spacesRenderer.initialise(10, false);
             spacesRenderer.renderSpaces(spaces);
         });
     }

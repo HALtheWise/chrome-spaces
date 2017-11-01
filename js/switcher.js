@@ -98,7 +98,7 @@
 
         chrome.runtime.sendMessage({ action: 'requestAllSpaces' }, function (spaces) {
 
-            spacesRenderer.initialise(8, true);
+            spacesRenderer.initialise(14, true);
             spacesRenderer.renderSpaces(spaces);
             addEventListeners();
         });

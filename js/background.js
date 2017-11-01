@@ -1,4 +1,4 @@
-
+    
 /* spaces
  * Copyright (C) 2015 Dean Oemcke
 */
@@ -538,7 +538,7 @@ var spaces = (function () {
                 type: 'popup',
                 url: url,
                 focused: true,
-                height: 420,
+                height: 640,
                 width: 316,
                 top: (screen.height-420),
                 left: (screen.width-316)
