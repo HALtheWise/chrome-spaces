@@ -75,7 +75,7 @@ var spaces = (function () {
     //when a tab or window is changed, close the move tab popup if it is open
     chrome.windows.onFocusChanged.addListener(function(windowId) {
         if (!debug && spacesPopupWindowId) {
-            if (windowId != spacesPopupWindowId) {
+            if ((windowId != spacesPopupWindowId) && (windowId != chrome.windows.WINDOW_ID_NONE)) {
                 closePopupWindow();
             }
         }
